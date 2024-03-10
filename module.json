@@ -1,16 +1,24 @@
 {
-  "id": "astral",
+  "id": "test",
   "title": "Astral Globe Skills",
-  "description": "Adds a custom skill tree tab to player character sheets for managing Astral Globe skills.",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "10",
+    "minimum": "11",
     "verified": "11"
   },
-  "scripts": [
-    "scripts/skill-tree.js"
-  ],
-  "styles": [
-    "styles/skill-tree.css"
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "frostipanda",
+      "flags": {}
+    }
   ]
 }
