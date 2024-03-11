@@ -1,32 +1,32 @@
 {
-    "id": "astral-globe-skills",
-    "title": "Astral Globe Skills",
-    "version": "1.1.3",
-    "compatibility": {
-        "minimum": "11",
-        "verified": "11"
-    },
-    "relationships": {
-        "systems": [
-            {
-                "id": "dnd5e",
-                "type": "system",
-                "compatibility": {}
-            }
-        ]
-    },
-    "authors": [
-        {
-            "name": "frostipanda",
-            "flags": {}
-        }
-    ],
-    "scripts": [
-        "scripts/skill-tree.js"
-    ]      
-    "styles": [
+  "id": "astral-globe-skills",
+  "title": "Astral Globe Skills",
+  "version": "1.1.3",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "frostipanda",
+      "flags": {}
+    }
+  ],
+  "scripts": [
+    "scripts/skill-tree.js"
+  ],
+  "styles": [
     "styles/astral-styles.css"
-  ]
-    "manifest": "https://raw.githubusercontent.com/frostipanda/astral-globe-skills/main/module.json",
-    "download": "https://github.com/frostipanda/astral-globe-skills/archive/refs/heads/main.zip"
+  ],
+  "manifest": "https://raw.githubusercontent.com/frostipanda/astral-globe-skills/main/module.json",
+  "download": "https://github.com/frostipanda/astral-globe-skills/archive/refs/heads/main.zip"
 }
