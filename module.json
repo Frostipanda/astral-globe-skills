@@ -1,6 +1,5 @@
 {
     "id": "astral-globe-skills",
-    "name": "Astral Globe Skills",
     "title": "Astral Globe Skills",
     "description": "Adds a custom skill tree tab to player character sheets for managing Astral Globe skills.",
     "version": "1.0.0",
