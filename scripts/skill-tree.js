@@ -7,16 +7,30 @@ Hooks.once('ready', () => {
 });
 
 Hooks.on('renderActorSheet', (app, html, data) => {
-  // Assuming "icon.png" is located in the "icons" folder within your module directory
-  const iconPath = "modules/astral-globe-skills/icons/tab.png"; // Adjust the path as necessary
-  const newTabButton = $(`<a class="item" data-tab="astral-globe" title="Astral Globe Skills"><img src="${iconPath}" alt="Astral Globe" /></a>`);
-  const newTabContent = $(`<div class="tab" data-tab="astral-globe"><p>This is where your skill tree will go.</p></div>`);
+  // Path adjustment for icon.png if needed
+  const iconPath = "modules/astral-globe-skills/icons/tab.png";
 
+  // Create a new tab button with an icon
+  const newTabButton = $(`<a class="item" data-tab="astral-globe" title="Astral Globe Skills"><img src="${iconPath}" alt="Astral Globe" style="width: 24px; height: 24px;"></a>`);
+
+  // Create new tab content area
+  const newTabContent = $(`<div class="tab" data-tab="astral-globe"></div>`);
+
+  // Create the label and input for "Current Astral Progress"
+  const astralProgressContent = $(`
+    <div style="margin-top: 10px;">
+      <label class="astral-progress-label" for="astral-progress-input">Current Astral Progress:</label>
+      <input type="number" id="astral-progress-input" class="astral-progress-input" placeholder="Enter progress" style="width: 100%;">
+    </div>
+  `);
+
+  // Append the custom tab button and content area to the actor sheet
   html.find('.tabs .item').last().after(newTabButton);
   html.find('.sheet-body').append(newTabContent);
+  newTabContent.append(astralProgressContent);
 
+  // Hide all other tabs when the new tab is clicked and show the associated content
   newTabButton.on('click', () => {
-    html.find('.tab').hide();
-    html.find('[data-tab="astral-globe"]').show();
+    app._tabs[0].activate("astral-globe");
   });
 });
