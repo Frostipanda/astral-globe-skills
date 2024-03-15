@@ -42,26 +42,36 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
             skillTreeContent.show();
         });
 
-        skillTreeContent.on('change', '#piecesCollected', async function() {
-            const pieces = parseInt($(this).val()) || 0;
-            await app.actor.setFlag('astral-globe-skills', 'piecesCollected', pieces);
+        skillTreeContent.on('change', '#piecesCollected', async function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            try {
+                const pieces = parseInt($(this).val()) || 0;
+                await app.actor.setFlag('astral-globe-skills', 'piecesCollected', pieces);
+            } catch (error) {
+                console.error("Error saving pieces collected:", error);
+            }
         });
 
         // Handle skill selection
         skillTreeContent.find('.select-skill').click(async function(event) {
             event.preventDefault();
-            event.stopPropagation
-            const skillName = $(this).data('skill');
-            let selectedSkills = app.actor.getFlag('astral-globe-skills', 'selectedAstralSkills') || [];
-            if (selectedSkills.includes(skillName)) {
-                selectedSkills = selectedSkills.filter(skill => skill !== skillName);
-                $(this).removeClass('selected');
-            } else {
-                selectedSkills.push(skillName);
-                $(this).addClass('selected');
+            event.stopPropagation();
+            try {
+                const skillName = $(this).data('skill');
+                let selectedSkills = app.actor.getFlag('astral-globe-skills', 'selectedAstralSkills') || [];
+                if (selectedSkills.includes(skillName)) {
+                    selectedSkills = selectedSkills.filter(skill => skill !== skillName);
+                    $(this).removeClass('selected');
+                } else {
+                    selectedSkills.push(skillName);
+                    $(this).addClass('selected');
+                }
+                await app.actor.setFlag('astral-globe-skills', 'selectedAstralSkills', selectedSkills);
+                console.log(selectedSkills);
+            } catch (error) {
+                console.error("Error handling skill selection:", error);
             }
-            await app.actor.setFlag('astral-globe-skills', 'selectedAstralSkills', selectedSkills);
-            console.log(selectedSkills);
         });
 
         // Load selected skills and update UI
