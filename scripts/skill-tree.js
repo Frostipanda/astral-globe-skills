@@ -8,7 +8,7 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
                 <div style="text-align: center; margin-bottom: 20px;">
                     <div style="float: right;">
                         <label>Pieces Collected: </label>
-                        <input type="number" id="piecesCollected" name="piecesCollected" min="0">
+                        <input type="number" id="piecesCollected" name="piecesCollected" min="0" value="${app.actor.getFlag('astral-globe-skills', 'piecesCollected') || 0}">
                     </div>
                     <h2 style="font-weight: bold;">Astral Ascendance</h2>
                 </div>
@@ -18,7 +18,15 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
                         <ul>
                             <li title="Gain the ability to understand and speak any language. This ability can be used once per long rest and lasts an hour.">
                                 Astral Insight
-                                <button type="button" class="select-skill" data-skill="Astral Insight">Select</button>
+                                <button type="button" class="select-skill" data-skill="Astral Insight">Astral Insight</button>
+                            </li>
+                            <li title="Players gain one inspiration point per session.">
+                                Celestial Insight
+                                <button type="button" class="select-skill" data-skill="Celestial Insight">Celestial Insight</button>
+                            </li>
+                            <li title="Gain resistance to a specific type of elemental damage (player's choice upon unlocking this skill). This ability can be used once per long rest and lasts an hour.">
+                                Stellar Resilience
+                                <button type="button" class="select-skill" data-skill="Stellar Resilience">Stellar Resilience</button>
                             </li>
                         </ul>
                     </div>
@@ -34,16 +42,23 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
             skillTreeContent.show();
         });
 
+        skillTreeContent.on('change', '#piecesCollected', async function() {
+            await app.actor.setFlag('astral-globe-skills', 'piecesCollected', $(this).val());
+        });
+
         // Handle skill selection
         skillTreeContent.find('.select-skill').click(async function() {
             const skillName = $(this).data('skill');
             let selectedSkills = app.actor.getFlag('astral-globe-skills', 'selectedAstralSkills') || [];
-            if (!selectedSkills.includes(skillName)) {
+            if (selectedSkills.includes(skillName)) {
+                selectedSkills = selectedSkills.filter(skill => skill !== skillName);
+                $(this).removeClass('selected');
+            } else {
                 selectedSkills.push(skillName);
-                await app.actor.setFlag('astral-globe-skills', 'selectedAstralSkills', selectedSkills);
-                console.log(skillName + ' selected and saved');
-                $(this).addClass('selected'); // Indicate that the skill is selected
+                $(this).addClass('selected');
             }
+            await app.actor.setFlag('astral-globe-skills', 'selectedAstralSkills', selectedSkills);
+            console.log(selectedSkills);
         });
 
         // Load selected skills and update UI
