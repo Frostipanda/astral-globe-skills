@@ -44,7 +44,7 @@
 
 /* Skill Selection Button Styling */
 .select-skill {
-  background-color: grey; /* Initial button color */
+  background-color: azure; /* Initial button color */
   color: black; /* Button text color */
   border: none;
   cursor: pointer;
@@ -55,7 +55,7 @@
 }
 
 .select-skill.selected {
-  background-color: azure; /* Color when selected */
+  background-color: #3161a3; /* Color when selected */
   color: black; /* Text color when selected */
 }
 
