@@ -1,1 +1,68 @@
+/* Skill Tree Tab Icon and Content Styling */
+.tabs a[data-tab='skillTree'] img {
+  width: 24px; /* Adjust icon size as needed */
+  height: 24px;
+  margin-right: 0; /* Ensures no additional space for text */
+}
+
+/* Hides the text label for the Skill Tree tab, if any text accidentally included */
+.tabs a[data-tab='skillTree']:after {
+  content: none;
+}
+
+/* Skill Tree Content Styling */
+.tab[data-tab='skillTree'] {
+  padding: 10px;
+  background-color: #f0f0f0; /* Light grey background, adjust to match your theme */
+}
+
+.skill-tree-section {
+  margin-top: 20px;
+}
+
+.tree-awakening, .tree-ascendance, .tree-apotheosis, .tree-mastery {
+  margin-bottom: 20px;
+}
+
+.tree-awakening h3, .tree-ascendance h3, .tree-apotheosis h3, .tree-mastery h3 {
+  color: #333; /* Dark grey for headers, adjust to match your theme */
+}
+
+.skill-tree-section ul {
+  list-style-type: none; /* Remove default list styling */
+  padding-left: 0;
+}
+
+.skill-tree-section li {
+  margin-bottom: 10px; /* Space between skills */
+  position: relative; /* For absolute positioning of the select button */
+}
+
+/* Skill Selection Button Styling */
+.select-skill {
+  background-color: #4CAF50; /* Green, adjust to match your theme */
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute; /* Position the button to the right of the skill */
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.select-skill:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Input Styles */
+input[type='number'] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+/* Additional styling as needed for alignment, fonts, etc. */
 
