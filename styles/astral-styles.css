@@ -40,20 +40,24 @@
 
 /* Skill Selection Button Styling */
 .select-skill {
-  background-color: #4CAF50; /* Green, adjust to match your theme */
-  color: white;
+  background-color: grey; /* Initial button color */
+  color: black; /* Button text color */
   border: none;
   cursor: pointer;
   padding: 5px 10px;
-  border-radius: 5px;
-  position: absolute; /* Position the button to the right of the skill */
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-left: 5px; /* Space from the skill name */
+  border-radius: 5px; /* Rounded corners for the button */
+  transition: background-color 0.3s; /* Smooth transition for background color change */
 }
 
+.select-skill.selected {
+  background-color: azure; /* Color when selected */
+  color: black; /* Text color when selected */
+}
+
+/* Hover effect */
 .select-skill:hover {
-  background-color: #45a049; /* Darker green on hover */
+  opacity: 0.8; /* Slightly transparent on hover for a subtle effect */
 }
 
 /* Input Styles */
@@ -62,7 +66,7 @@ input[type='number'] {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-left: 10px;
+  width: auto; /* Adjust input width as needed */
 }
 
 /* Additional styling as needed for alignment, fonts, etc. */
-
