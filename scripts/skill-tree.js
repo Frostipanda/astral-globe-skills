@@ -50,11 +50,11 @@ Hooks.on('renderActorSheet', (app, html, data) => {
     html.find('.sheet-body').append(tabContent);
 
     // Optional: Add click handler to show your custom tab content when the tab is clicked
-   // html.find('.sheet-navigation .item[data-tab="skillTree"]').click(function() {
+    html.find('.sheet-navigation .item[data-tab="skillTree"]').click(function() {
       // Hide all other tabs
-     // html.find('.sheet-body .tab').hide();
+      html.find('.sheet-body .tab').hide();
       // Show your custom tab content
-     // html.find('.sheet-body .tab[data-tab="skillTree"]').show();
+      html.find('.sheet-body .tab[data-tab="skillTree"]').show();
     });
   }
 });
