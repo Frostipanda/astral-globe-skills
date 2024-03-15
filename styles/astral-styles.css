@@ -13,11 +13,15 @@
 /* Skill Tree Content Styling */
 .tab[data-tab='skillTree'] {
   padding: 10px;
-  background-color: #f0f0f0; /* Light grey background, adjust to match your theme */
+  background-color: #f0f0f0; /* Light grey background, adjust if not using an image */
+  background-image: url('modules/astral-globe-skills/images/BG1.jpg'); /* Path to your background image */
+  background-size: cover; /* Cover the entire area of the tab */
+  background-position: center; /* Center the background image */
 }
 
 .skill-tree-section {
   margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a slight white overlay for better readability */
 }
 
 .tree-awakening, .tree-ascendance, .tree-apotheosis, .tree-mastery {
