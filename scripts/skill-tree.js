@@ -46,7 +46,7 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
             event.preventDefault();
             event.stopPropagation();
             try {
-                const pieces = parseInt($(this).val()) || 0;
+                const pieces = parseInt($(this).val()) || 1;
                 await app.actor.setFlag('astral-globe-skills', 'piecesCollected', pieces);
             } catch (error) {
                 console.error("Error saving pieces collected:", error);
