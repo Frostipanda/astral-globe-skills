@@ -1,6 +1,6 @@
-console.log("Astral Globe Skills module loaded.");
-console.log("Adding skill tree content...");
+console.log("Astral Globe Skills module loaded at the top level.");
 Hooks.on('renderActorSheet', (app, html, data) => {
+  console.log("Astral Globe Skills module hook triggered.");
   // Check if the custom tab already exists to avoid duplicates when rendering multiple times
   if (html.find(".tab.skill-tree").length === 0) {
     addSkillTreeTab(app, html, data);
