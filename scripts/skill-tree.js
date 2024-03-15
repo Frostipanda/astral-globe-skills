@@ -63,5 +63,5 @@ function addSkillTreeTab(app, html, data) {
   sheetBody.append(skillTreeContent);
   console.log("Skill tree content added.");
 
-  // Additional logic for handling skill tree interactions can go here
+  // Additional logic for handling skill tree interactions can go heres
 }
