@@ -1,21 +1,27 @@
 Hooks.on("renderActorSheet5eCharacter", (app, html, data) => {
-    console.log("Astral Globe Skills module adjusting new character sheet.");
+    console.log("Astral Globe Skills module adjusting character sheet.");
 
-    // Check if the skill tree tab is already present
     if (!html.find(".tabs [data-tab='skillTree']").length) {
-        const tabButton = $('<a class="item control" data-group="primary" data-tab="skillTree" data-tooltip="Skill Tree" aria-label="Skill Tree"><i class="fas fa-sitemap"></i></a>');
-        const tabContent = $('<div class="tab" data-group="primary" data-tab="skillTree" style="display: none;">Your skill tree content here</div>');
+        // Creating the tab button with a custom icon
+        const tabButton = $(`<a class="item" data-tab="skillTree"><img src="/modules/astral-globe-skills/icons/tab.png" width="20" height="20" style="border:0;"></a>`);
+        // Skill Tree tab content placeholder
+        const tabContent = $(`
+            <div class="tab" data-tab="skillTree" style="display: none;">
+                <!-- Your Skill Tree HTML content here -->
+            </div>
+        `);
 
-        // Insert the new tab button and content
+        // Append the new tab button
         html.find('.tabs[data-group="primary"]').append(tabButton);
-        html.find('.sheet-body').append(tabContent); // Adjust this selector if necessary
+        // Append the new tab content
+        html.find('.sheet-body').append(tabContent);
 
-        // Handle clicking the new tab
-        tabButton.click(() => {
-            html.find(".tab").hide(); // Hide all tab contents
-            html.find(".tabs a").removeClass("active"); // Deactivate all tabs
-            tabButton.addClass("active"); // Activate the new tab
-            tabContent.show(); // Show the new tab content
+        // Activate the new tab on click
+        tabButton.click(function() {
+            html.find(".tabs a.item").removeClass("active");
+            html.find(".tab").hide();
+            tabButton.addClass("active");
+            tabContent.show();
         });
     }
 });
