@@ -43,11 +43,14 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
         });
 
         skillTreeContent.on('change', '#piecesCollected', async function() {
-            await app.actor.setFlag('astral-globe-skills', 'piecesCollected', $(this).val());
+            const pieces = parseInt($(this).val()) || 0;
+            await app.actor.setFlag('astral-globe-skills', 'piecesCollected', pieces);
         });
 
         // Handle skill selection
-        skillTreeContent.find('.select-skill').click(async function() {
+        skillTreeContent.find('.select-skill').click(async function(event) {
+            event.preventDefault();
+            event.stopPropagation
             const skillName = $(this).data('skill');
             let selectedSkills = app.actor.getFlag('astral-globe-skills', 'selectedAstralSkills') || [];
             if (selectedSkills.includes(skillName)) {
